@@ -1,6 +1,11 @@
 const inquirer = require("inquirer");
 const generateHTML = require("./dist/generateHTML");
 const fs = require("fs");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+
+
 
 const questions = [
   {
@@ -48,16 +53,36 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(`./dist/${fileName}`, data, (err) =>
+  fs.appendFileFile(`./dist/test.html`, data, (err) =>
     err ? console.error(err) : console.log("sucess")
   );
 }
 
 function init() {
   inquirer.prompt([...questions]).then((response) => {
-    const answer = generateHTML.createPage(response);
+    const {name, id, email, role, github, office, school}= response
+    
+    switch (role){
+      case 'manager':
+        console.log("manager")
+        const tile= new Manager(name, id, email, office);
+        tile.getName()
+        tile.getId()
+        tile.getEmail()
+        tile.getRole()
+        tile.getOffice()
+        
+      default:
+        return "Please enter data"
+    }
+    
+    
 
-    writeToFile("test.html", answer);
+    
+
+    // const answer = generateHTML.createPage(response);
+
+    // writeToFile("test.html", answer);
   });
 }
 

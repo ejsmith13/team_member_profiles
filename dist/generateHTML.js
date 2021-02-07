@@ -1,6 +1,21 @@
-function createPage(data){
-    const {name, id, email} = data
-    const html= `
+// const Employee= require("./lib/employee")
+
+ 
+function createPage(data) {
+//   switch (data.role) {
+//     case "manager":
+//       return console.log("manager");
+//     case "engineer":
+//       return console.log("engineer");
+//     case "intern":
+//       return console.log("intern");
+//   }
+
+
+  const { name, id, email } = data;
+
+  
+  const html = `
     <html>
         <body>
             <h1>${name}</h1>
@@ -8,9 +23,11 @@ function createPage(data){
             <p>${email}</p>
         </body>
     </html>
-    `
+    `;
 
-    return html
+  return html;
 }
 
-module.exports= {createPage}
+module.exports = { 
+    
+    createPage };
