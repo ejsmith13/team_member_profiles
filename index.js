@@ -49,7 +49,7 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  fs.appendFileFile(`./dist/test.html`, data, (err) =>
+  fs.writeFile(`./dist/test.html`, data, (err) =>
     err ? console.error(err) : console.log("sucess")
   );
 }
@@ -57,36 +57,40 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt([...questions]).then((response) => {
     const { name, id, email, role, github, office, school } = response;
-
+    
+    let employeeTile;
+    
     switch (role) {
       case "manager":
         console.log("manager");
-        const manager = new Manager(name, id, email, office);
-        manager.getName();
-        manager.getId();
-        manager.getEmail();
-        manager.getRole();
-        manager.getOffice();
+        employeeTile = new Manager(response);
+        employeeTile.getName();
+        employeeTile.getId();
+        employeeTile.getEmail();
+        employeeTile.getRole();
+        employeeTile.getOffice();
+
+        
         break;
       case "engineer":
         console.log("eningeer");
-        const engineer = new Engineer(name, id, email, github);
-        engineer.getName();
-        engineer.getId();
-        engineer.getEmail();
-        engineer.getRole();
-        engineer.getGitHub();
+        employeeTile = new Engineer(response);
+        employeeTile.getName();
+        employeeTile.getId();
+        employeeTile.getEmail();
+        employeeTile.getRole();
+        employeeTile.getGitHub();
+
         break;
       case "intern":
         console.log("intern");
-        const intern = new Intern(name, id, email, school);
-        intern.getName();
-        intern.getId();
-        intern.getEmail();
-        intern.getRole();
-        intern.getSchool();
+        employeeTile = new Intern(response);
+        employeeTile.getName();
+        employeeTile.getId();
+        employeeTile.getEmail();
+        employeeTile.getRole();
+        employeeTile.getSchool();
         break;
-
       default:
         return "Please enter data";
     }

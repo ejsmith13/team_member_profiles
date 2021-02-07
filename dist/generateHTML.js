@@ -1,27 +1,29 @@
-// const Employee= require("./lib/employee")
+
 
  
-function createPage(data) {
-//   switch (data.role) {
-//     case "manager":
-//       return console.log("manager");
-//     case "engineer":
-//       return console.log("engineer");
-//     case "intern":
-//       return console.log("intern");
-//   }
+function createPage(name, id, email, role, school) {
 
 
-  const { name, id, email } = data;
+  
 
   
   const html = `
-    <html>
-        <body>
-            <h1>${name}</h1>
-            <p>${id}</p>
-            <p>${email}</p>
-        </body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+  <body>
+      <h1>${name}</h1>
+      <p>${id}</p>
+      <p>${email}</p>
+      <p>${role}</p>
+      <p>${school}</p>
+  </body>
+  </html>y>
     </html>
     `;
 
