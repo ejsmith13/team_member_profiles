@@ -57,43 +57,34 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer.prompt([...questions]).then((response) => {
     const { name, id, email, role, github, office, school } = response;
-    
+
     let employeeTile;
-    
+    const employeeArray = [];
+
     switch (role) {
       case "manager":
         console.log("manager");
-        employeeTile = new Manager(response);
-        employeeTile.getName();
-        employeeTile.getId();
-        employeeTile.getEmail();
-        employeeTile.getRole();
-        employeeTile.getOffice();
-
-        
+        employeeArray.push(new Manager(response));
+        console.log(employeeArray);
         break;
       case "engineer":
         console.log("eningeer");
-        employeeTile = new Engineer(response);
-        employeeTile.getName();
-        employeeTile.getId();
-        employeeTile.getEmail();
-        employeeTile.getRole();
-        employeeTile.getGitHub();
-
+        employeeArray.push(new Engineer(response));
+        console.log(employeeArray);
         break;
       case "intern":
         console.log("intern");
-        employeeTile = new Intern(response);
-        employeeTile.getName();
-        employeeTile.getId();
-        employeeTile.getEmail();
-        employeeTile.getRole();
-        employeeTile.getSchool();
+        employeeArray.push(new Intern(response));
+        console.log(employeeArray);
         break;
       default:
         return "Please enter data";
     }
+
+    employeeArray.forEach((item) => {
+      const answer = generateHTML.createPage(item);
+      writeToFile("test.html", answer);
+    });
 
     // const answer = generateHTML.createPage(response);
 

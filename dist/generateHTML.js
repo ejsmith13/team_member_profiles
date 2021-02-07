@@ -1,8 +1,8 @@
 
 
  
-function createPage(name, id, email, role, school) {
-
+function createPage(response) {
+    const{name, id, email, role, office, school, github}= response
 
   
 
