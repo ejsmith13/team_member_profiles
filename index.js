@@ -4,8 +4,10 @@ const fs = require("fs");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const Employee = require("./lib/employee");
 
 const employeeArray = [];
+const anwerArray=[];
 const questions = [
   {
     name: "name",
@@ -55,54 +57,56 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(`./dist/load.html`, data, (err) =>
+  fs.writeFile(`./dist/${fileName}`, data, (err) =>
     err ? console.error(err) : console.log("sucess")
   );
 }
 
 function init() {
   inquirer
+    //prompt questions for details of people
     .prompt([...questions])
     .then((response) => {
-      console.log(response)
       const { name, id, email, role, github, office, school } = response;
-
-      
-
+      //switch to tell program to make manager, engineer, or intern
       switch (role) {
         case "manager":
-          console.log("manager");
           employeeArray.push(new Manager(response));
           break;
         case "engineer":
-          console.log("eningeer");
           employeeArray.push(new Engineer(response));
           break;
         case "intern":
-          console.log("intern");
           employeeArray.push(new Intern(response));
           break;
         default:
           return "Please enter role";
       }
-      
+
       //asks if you would like to add additional members
-      if(response.additional === true){
-        init();
+      if (response.additional === true) {
+        return init();
       }
+      //calls function to create tiles
+      createTiles();
+    });
+}
+//creates a card for each person and pushes it to an answers array
+function createTiles() {
+  employeeArray.forEach((item) => {
+    anwerArray.push(generateHTML.createCard(item));
+  });
+  createHTML(anwerArray);
+}
+//creates html for page and sends it to fs for creation
+function createHTML(answerArray) {
+  
+  const page= generateHTML.createPage(answerArray)
 
-      
-
-      employeeArray.forEach((item) => {
-        const answer= generateHTML.createPage(item);
-        writeToFile("test.html", answer);
-      });
-
-      // const answer = generateHTML.createPage(response);
-
-      // writeToFile("test.html", answer);
-    })
-   
+  writeToFile("team.html", page)
+  
 }
 
 init();
+
+

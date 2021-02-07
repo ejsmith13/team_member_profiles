@@ -1,28 +1,62 @@
+// function createManager(response) {
+//   const { name, id, email, role, office, school, github } = response;
+//   const managerHTML = `
+//   <div class="card" style="width: 18rem;">
+//         <div class="card-header bg-primary">
+//           <h2>${name}</h2>
+//           <h3>${role}</h3>
+//         </div> 
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item">Id: ${id}</li>
+//           <li class="list-group-item">Email: ${email}</li>
+//           <li class="list-group-item">Extra: ${office}</li>
+//         </ul>
+//       </div>`;
 
+//   return managerHTML;
+// }
+// function createEngineer(response) {
+//   const { name, id, email, role, office, school, github } = response;
+//   const engineerHTML = `
+//   <div class="card" style="width: 18rem;">
+//         <div class="card-header bg-primary">
+//           <h2>${name}</h2>
+//           <h3>${role}</h3>
+//         </div> 
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item">Id: ${id}</li>
+//           <li class="list-group-item">Email: ${email}</li>
+//           <li class="list-group-item">Extra: ${github}</li>
+//         </ul>
+//       </div>`;
 
- 
-function createPage(response) {
-    const{name, id, email, role, office, school, github}= response
+//   return engineerHTML;
+// }
+// function createIntern(response) {
+//   const { name, id, email, role, office, school, github } = response;
+//   const internHTML = `
+//   <div class="card" style="width: 18rem;">
+//         <div class="card-header bg-primary">
+//           <h2>${name}</h2>
+//           <h3>${role}</h3>
+//         </div> 
+//         <ul class="list-group list-group-flush">
+//           <li class="list-group-item">Id: ${id}</li>
+//           <li class="list-group-item">Email: ${email}</li>
+//           <li class="list-group-item">Extra: ${school}</li>
+//         </ul>
+//       </div>`;
 
-  
+//   return internHTML;
+// }
+const cards=[];
 
-  
-  const html = `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-      <link rel="stylesheet" href="style.css">
-      <title>MY Team</title>
-  </head>
-  <body>
-    <nav class="nav justify-content-center h1 " >My Team</nav>
+function createCard(response) {
+  const { name, id, email, role, office, school, github } = response;
 
-   <div class ="container">
-    <div class="row">
+  switch (role) {
+    case "manager":
+      const managerHTML = `
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-primary">
           <h2>${name}</h2>
@@ -31,20 +65,73 @@ function createPage(response) {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Id: ${id}</li>
           <li class="list-group-item">Email: ${email}</li>
-          <li class="list-group-item">Extra: ${office}</li>
+          <li class="list-group-item">Office Number: ${office}</li>
         </ul>
+      </div>`;
+      return managerHTML;
+    case "engineer":
+      const engineerHTML = `
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary">
+          <h2>${name}</h2>
+          <h3>${role}</h3>
+        </div> 
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Id: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">Github: <a href=https://github.com/${github}>${github}</a> </li>
+        </ul>
+      </div>`;
+      return engineerHTML;
+    case "intern":
+      const internHTML = `
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary">
+          <h2>${name}</h2>
+          <h3>${role}</h3>
+        </div> 
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Id: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">School: ${school}</li>
+        </ul>
+      </div>`;
+      return internHTML;
+    default:
+      return;
+  }
+}
+function createPage(response) {
+  
+    const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <title>MY Team</title>
+    </head>
+    <body>
+      <nav class="nav justify-content-center h1 " >My Team</nav>
+
+    <div class ="container">
+      <div class="row">
+        ${response}
       </div>
     </div>
-   </div>
-      
-  </body>
-  </html>
+        
+    </body>
     </html>
-    `;
-
+      </html>
+      `;
+  
   return html;
 }
 
-module.exports = { 
-    
-    createPage };
+module.exports = {
+  createCard,
+  createPage,
+};
