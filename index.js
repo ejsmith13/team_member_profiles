@@ -19,19 +19,28 @@ const questions = [
     type: "input",
   },
   {
+    name: "role",
+    message: "What is the employee's role?",
+    type: "list",
+    choices: ["manager", "engineer", "intern"]
+  },
+  {
     name: "office",
-    message: "If a manager, what is their office number?",
+    message: "What is their office number?",
     type: "input",
+    when: (answer) => answer.role === "manager"
   },
   {
     name: "github",
-    message: "If an engineer, what is the employee's GitHub user name?",
+    message: "What is the employee's GitHub user name?",
     type: "input",
+    when: (answer) => answer.role === "engineer"
   },
   {
     name: "school",
-    message: "If an intern, what school do they attend?",
+    message: "What school do they attend?",
     type: "input",
+    when: (answer) => answer.role === "intern"
   },
 ];
 
