@@ -8,8 +8,6 @@ function createPage(response) {
 
   
   const html = `
- 
-  
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -23,15 +21,21 @@ function createPage(response) {
   <body>
     <nav class="nav justify-content-center h1 " >My Team</nav>
 
-    <div class="card" style="width: 18rem;">
-      <h2>`${name}`</h2>
-      <h3>`${role}`</h3>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Id: `${id}`</li>
-        <li class="list-group-item">Email: `${email}`</li>
-        <li class="list-group-item">Extra: `${office}`</li>
-      </ul>
+   <div class ="container">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary">
+          <h2>${name}</h2>
+          <h3>${role}</h3>
+        </div> 
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Id: ${id}</li>
+          <li class="list-group-item">Email: ${email}</li>
+          <li class="list-group-item">Extra: ${office}</li>
+        </ul>
+      </div>
     </div>
+   </div>
       
   </body>
   </html>

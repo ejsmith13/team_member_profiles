@@ -55,7 +55,7 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(`./dist/test.html`, data, (err) =>
+  fs.writeFile(`./dist/load.html`, data, (err) =>
     err ? console.error(err) : console.log("sucess")
   );
 }
@@ -85,17 +85,18 @@ function init() {
         default:
           return "Please enter role";
       }
-      console.log(employeeArray)
+      
+      //asks if you would like to add additional members
       if(response.additional === true){
         init();
       }
 
       
 
-      // employeeArray.forEach((item) => {
-      //   const answer = generateHTML.createPage(item);
-      //   writeToFile("test.html", answer);
-      // });
+      employeeArray.forEach((item) => {
+        const answer= generateHTML.createPage(item);
+        writeToFile("test.html", answer);
+      });
 
       // const answer = generateHTML.createPage(response);
 
