@@ -1,61 +1,10 @@
-// function createManager(response) {
-//   const { name, id, email, role, office, school, github } = response;
-//   const managerHTML = `
-//   <div class="card" style="width: 18rem;">
-//         <div class="card-header bg-primary">
-//           <h2>${name}</h2>
-//           <h3>${role}</h3>
-//         </div> 
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">Id: ${id}</li>
-//           <li class="list-group-item">Email: ${email}</li>
-//           <li class="list-group-item">Extra: ${office}</li>
-//         </ul>
-//       </div>`;
 
-//   return managerHTML;
-// }
-// function createEngineer(response) {
-//   const { name, id, email, role, office, school, github } = response;
-//   const engineerHTML = `
-//   <div class="card" style="width: 18rem;">
-//         <div class="card-header bg-primary">
-//           <h2>${name}</h2>
-//           <h3>${role}</h3>
-//         </div> 
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">Id: ${id}</li>
-//           <li class="list-group-item">Email: ${email}</li>
-//           <li class="list-group-item">Extra: ${github}</li>
-//         </ul>
-//       </div>`;
-
-//   return engineerHTML;
-// }
-// function createIntern(response) {
-//   const { name, id, email, role, office, school, github } = response;
-//   const internHTML = `
-//   <div class="card" style="width: 18rem;">
-//         <div class="card-header bg-primary">
-//           <h2>${name}</h2>
-//           <h3>${role}</h3>
-//         </div> 
-//         <ul class="list-group list-group-flush">
-//           <li class="list-group-item">Id: ${id}</li>
-//           <li class="list-group-item">Email: ${email}</li>
-//           <li class="list-group-item">Extra: ${school}</li>
-//         </ul>
-//       </div>`;
-
-//   return internHTML;
-// }
-const cards=[];
 
 function createCard(response) {
   const { name, id, email, role, office, school, github } = response;
 
   switch (role) {
-    case "manager":
+    case "Manager":
       const managerHTML = `
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-primary">
@@ -69,7 +18,7 @@ function createCard(response) {
         </ul>
       </div>`;
       return managerHTML;
-    case "engineer":
+    case "Engineer":
       const engineerHTML = `
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-primary">
@@ -83,7 +32,7 @@ function createCard(response) {
         </ul>
       </div>`;
       return engineerHTML;
-    case "intern":
+    case "Intern":
       const internHTML = `
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-primary">

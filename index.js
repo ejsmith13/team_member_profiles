@@ -28,25 +28,25 @@ const questions = [
     name: "role",
     message: "What is the employee's role?",
     type: "list",
-    choices: ["manager", "engineer", "intern"],
+    choices: ["Manager", "Engineer", "Intern"],
   },
   {
     name: "office",
     message: "What is their office number?",
     type: "input",
-    when: (answer) => answer.role === "manager",
+    when: (answer) => answer.role === "Manager",
   },
   {
     name: "github",
     message: "What is the employee's GitHub user name?",
     type: "input",
-    when: (answer) => answer.role === "engineer",
+    when: (answer) => answer.role === "Engineer",
   },
   {
     name: "school",
     message: "What school do they attend?",
     type: "input",
-    when: (answer) => answer.role === "intern",
+    when: (answer) => answer.role === "Intern",
   },
   {
     name: "additional",
@@ -70,13 +70,13 @@ function init() {
       const { name, id, email, role, github, office, school } = response;
       //switch to tell program to make manager, engineer, or intern
       switch (role) {
-        case "manager":
+        case "Manager":
           employeeArray.push(new Manager(response));
           break;
-        case "engineer":
+        case "Engineer":
           employeeArray.push(new Engineer(response));
           break;
-        case "intern":
+        case "Intern":
           employeeArray.push(new Intern(response));
           break;
         default:
