@@ -39,6 +39,10 @@
   ![screenshot of website](assets/images/website_screenshot.png)
   ![screenshot of commandline](assets/images/command_line_screenshot.png)
 
+  [View video here!]( https://drive.google.com/file/d/1-yULsQ71a4EIDXwd90xWXImOvAj94JiL/view)
+  
+  
+
 
   
 --------------------------------------
